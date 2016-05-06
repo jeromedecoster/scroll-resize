@@ -1,0 +1,23 @@
+{
+  "name": "scroll-resize",
+  "version": "0.1.0",
+  "description": "Throttled window scroll and resize events",
+  "repository": "jeromedecoster/scroll-resize",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "start": "budo --dir public --host localhost --port 3000 --open",
+    "dev": "node scripts/dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "budo": "^8.2.2"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "raf-funcs": "^0.2.0",
+    "viewport-funcs": "^0.1.0"
+  }
+}

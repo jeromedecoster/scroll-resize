@@ -1,0 +1,121 @@
+<html>
+  <head>
+    <title>scroll-resize</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.png">
+    <style type="text/css">
+      body { margin: 0; }
+      .card {
+        font-size: 15px;
+        z-index: 1;
+        position: fixed;
+        left: 50px;
+        top: 50px;
+        width: 240px;
+        padding: 10px;
+        background-color: #eee;
+      }
+      h4 { margin: 0 0 8px 0; }
+      input[type=number] {
+        font-size: 24px;
+        outline: none;
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      .card div, span {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        cursor: pointer;
+      }
+      button {
+        font-size: 13px;
+        outline: none;
+        padding: 8px;
+        margin-top: 8px;
+        width: 49%;
+        text-align: left;
+      }
+      .rect {
+        left: 320px;
+        max-width: 134px;
+      }
+      table {
+        width: 100%;
+        font-family: monospace;
+        padding: 7px;
+        margin: 0;
+        background-color: #fff;
+        border: 1px solid #bbb;
+        color: rgb(28, 0, 207);
+      }
+      table tr td:first-child {
+        width: 73px;
+        text-align: right;
+        color: rgb(136, 19, 145);
+      }
+      img {
+        margin-bottom: 20px;
+        margin-left: 60px;
+      }
+      .r {
+        font-family: Courier;
+        color: #fff;
+        text-align: center;
+        line-height: 26px;
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        background-color: grey;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card timeout">
+      <input offset type="number" min="0" max="2000" step="200" value="1000"/>
+      <div>
+      <span>ignore:</span>
+      <input type="radio" name="ignore" id="none" value="none" checked="" />
+      <label for="none">none</label>
+      <input type="radio" name="ignore" id="resize" value="resize"/>
+      <label for="resize">resize</label>
+      <input type="radio" name="ignore" id="scroll" value="scroll"/>
+      <label for="scroll">scroll</label>
+      </div>
+      <button action="start">.start()</button>
+      <button action="start-true">.start(true)</button>
+      <button action="stop">.stop()</button>
+      <button action="stop-true">.stop(true)</button>
+    </div>
+    <div class='card rect'>
+      <table>
+        <tr>
+          <td>width :</td><td width>...</td>
+        </tr>
+        <tr>
+          <td>height :</td><td height>...</td>
+        </tr>
+        <tr>
+          <td>left :</td><td left>...</td>
+        </tr>
+        <tr>
+          <td>top :</td><td top>...</td>
+        </tr>
+        <tr>
+          <td>right :</td><td right>...</td>
+        </tr>
+        <tr>
+          <td>bottom :</td><td bottom>...</td>
+        </tr>
+      </table>
+    </div>
+    <div class="r tl" style="top: 0px; left: 0px;">TL</div>
+    <div class="r tr" style="top: 0px; left: 0px;">TR</div>
+    <div class="r bl" style="top: 0px; left: 0px;">BL</div>
+    <div class="r br" style="top: 0px; left: 0px;">BR</div>
+    <img src="baboon.jpg"/>
+    <script src="bundle.js"></script>
+  </body>
+</html>
