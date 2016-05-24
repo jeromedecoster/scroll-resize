@@ -1,6 +1,6 @@
 {
   "name": "scroll-resize",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Throttled window scroll and resize events",
   "repository": "jeromedecoster/scroll-resize",
   "main": "index.js",

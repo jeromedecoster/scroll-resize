@@ -42,7 +42,8 @@ ScrollResize.prototype.stop = function(skip) {
 }
 
 ScrollResize.prototype.call = function () {
-  this.cb(this.silent ? undefined : rect())
+  if (this.silent === true) this.cb()
+  else this.cb(rect())
 }
 
 function safe(delay) {
