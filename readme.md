@@ -17,6 +17,7 @@ npm i scroll-resize
 | **cb** | the callback |
 | **opts.delay** | optional delay, default to 50 ms, min to 25 ms |
 | **opts.ignore** | optional ignore, accept `scroll` or `resize`, default to `undefined` |
+| **opts.silent** | if `true`, no `data` will be computed and sent to the callback, default to `false` |
 
 The callback receive an object with 6 properties
 

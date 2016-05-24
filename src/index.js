@@ -2,6 +2,7 @@
 const ScrollResize = require('..')
 
 const offset = document.querySelector('input[offset]')
+const silent = document.querySelector('input[silent]')
 const output = document.querySelector('.output')
 const tl = document.querySelector('.tl')
 const tr = document.querySelector('.tr')
@@ -35,7 +36,7 @@ function button(evt) {
     //   a[a.length - 1].start(bool)
     // }
 
-    sr = new ScrollResize(update, {delay:delay, ignore:ignore})
+    sr = new ScrollResize(update, {delay:delay, ignore:ignore, silent:silent.checked})
     sr.start(bool)
   } else {
     sr.stop(bool)
@@ -49,6 +50,7 @@ function getIgnore() {
 }
 
 function update(data) {
+  if (data == undefined) return console.log('silent')
   // uncomment to see stress test
   // var d = new Date()
   // console.log(d.toString().substr(16, 8) + '.' + d.getMilliseconds())

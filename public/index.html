@@ -76,13 +76,16 @@
     <div class="card timeout">
       <input offset type="number" min="0" max="2000" step="200" value="1000"/>
       <div>
-      <span>ignore:</span>
-      <input type="radio" name="ignore" id="none" value="none" checked="" />
-      <label for="none">none</label>
-      <input type="radio" name="ignore" id="resize" value="resize"/>
-      <label for="resize">resize</label>
-      <input type="radio" name="ignore" id="scroll" value="scroll"/>
-      <label for="scroll">scroll</label>
+        <span>ignore:</span>
+        <input type="radio" name="ignore" id="none" value="none" checked="" />
+        <label for="none">none</label>
+        <input type="radio" name="ignore" id="resize" value="resize"/>
+        <label for="resize">resize</label>
+        <input type="radio" name="ignore" id="scroll" value="scroll"/>
+        <label for="scroll">scroll</label>
+      </div>
+      <div style="margin-top:5px">
+        <input silent type="checkbox" id="silent"/><label for="silent">silent</label>
       </div>
       <button action="start">.start()</button>
       <button action="start-true">.start(true)</button>

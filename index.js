@@ -11,6 +11,7 @@ function ScrollResize(cb, opts) {
 
   this.cb = cb
   this.ignore = opts.ignore
+  this.silent = opts.silent === true
   this.throttled = throttle(this.call, safe(opts.delay), this)
   this.started = false
 }
@@ -40,7 +41,7 @@ ScrollResize.prototype.stop = function(skip) {
 }
 
 ScrollResize.prototype.call = function () {
-  this.cb(rect())
+  this.cb(this.silent ? undefined : rect())
 }
 
 function safe(delay) {

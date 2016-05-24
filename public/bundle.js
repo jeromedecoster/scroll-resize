@@ -12,6 +12,7 @@ function ScrollResize(cb, opts) {
 
   this.cb = cb
   this.ignore = opts.ignore
+  this.silent = opts.silent === true
   this.throttled = throttle(this.call, safe(opts.delay), this)
   this.started = false
 }
@@ -41,7 +42,7 @@ ScrollResize.prototype.stop = function(skip) {
 }
 
 ScrollResize.prototype.call = function () {
-  this.cb(rect())
+  this.cb(this.silent ? undefined : rect())
 }
 
 function safe(delay) {
@@ -268,6 +269,7 @@ function safe(offset) {
 const ScrollResize = require('..')
 
 const offset = document.querySelector('input[offset]')
+const silent = document.querySelector('input[silent]')
 const output = document.querySelector('.output')
 const tl = document.querySelector('.tl')
 const tr = document.querySelector('.tr')
@@ -301,7 +303,7 @@ function button(evt) {
     //   a[a.length - 1].start(bool)
     // }
 
-    sr = new ScrollResize(update, {delay:delay, ignore:ignore})
+    sr = new ScrollResize(update, {delay:delay, ignore:ignore, silent:silent.checked})
     sr.start(bool)
   } else {
     sr.stop(bool)
@@ -315,6 +317,7 @@ function getIgnore() {
 }
 
 function update(data) {
+  if (data == undefined) return console.log('silent')
   // uncomment to see stress test
   // var d = new Date()
   // console.log(d.toString().substr(16, 8) + '.' + d.getMilliseconds())
