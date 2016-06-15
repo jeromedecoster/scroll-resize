@@ -1,5 +1,7 @@
 
 const ScrollResize = require('..')
+var s = new ScrollResize(function() {}, {delay:1, ignore:'ko'})
+s.start()
 
 const offset = document.querySelector('input[offset]')
 const silent = document.querySelector('input[silent]')

@@ -1,18 +1,24 @@
-
-const throttle = require('raf-funcs').throttle
-const rect = require('viewport-funcs').rect
+const setBoolean = require('is-funcs/set-boolean')
+const setNumber = require('is-funcs/set-number')
+const setString = require('is-funcs/set-string')
+const throttle = require('raf-funcs/throttle')
+const rect = require('viewport-funcs/rect')
+const only = require('object-funcs/only')
 
 module.exports = ScrollResize
 
 function ScrollResize(cb, opts) {
   if (!(this instanceof ScrollResize)) return new ScrollResize(cb, opts)
 
-  if (!opts) opts = {}
-
+  if (typeof cb !== 'function') throw new Error('ScrollResize require a callback')
   this.cb = cb
-  this.ignore = opts.ignore
-  this.silent = opts.silent === true
-  this.throttled = throttle(this.call, safe(opts.delay), this)
+
+  this.opts = only(opts, 'delay ignore silent')
+  this.opts.delay  = setNumber(this.opts.delay, 50, 25)
+  this.opts.silent = setBoolean(this.opts.silent)
+  this.opts.ignore = setString(this.opts.ignore, null, 'resize scroll')
+
+  this.throttled = throttle(this.call, this.opts.delay, this)
   this.started = false
 }
 
@@ -20,8 +26,8 @@ ScrollResize.prototype.start = function(skip) {
   if (this.started === true) return
   this.started = true
 
-  if (this.ignore != 'resize') window.addEventListener('resize', this.throttled, false)
-  if (this.ignore != 'scroll') window.addEventListener('scroll', this.throttled, false)
+  if (this.opts.ignore != 'resize') window.addEventListener('resize', this.throttled, false)
+  if (this.opts.ignore != 'scroll') window.addEventListener('scroll', this.throttled, false)
 
   if (skip === true) return
   this.throttled.immediate()
@@ -41,11 +47,6 @@ ScrollResize.prototype.stop = function(skip) {
 }
 
 ScrollResize.prototype.call = function () {
-  if (this.silent === true) this.cb()
+  if (this.opts.silent === true) this.cb()
   else this.cb(rect())
-}
-
-function safe(delay) {
-  if (delay == undefined || typeof delay != 'number' || delay !== delay) return 50
-  return delay < 25 ? 25 : delay
 }

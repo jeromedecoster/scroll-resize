@@ -1,6 +1,6 @@
 {
   "name": "scroll-resize",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Throttled window scroll and resize events",
   "repository": "jeromedecoster/scroll-resize",
   "main": "index.js",
@@ -9,21 +9,28 @@
   ],
   "keywords": [
     "throttle",
+    "window",
     "scroll",
     "resize",
     "event"
   ],
+  "author": {
+    "name": "Jérôme Decoster",
+    "url": "http://jeromedecoster.com"
+  },
   "license": "MIT",
   "scripts": {
-    "start": "budo --dir public --host localhost --port 3000 --open",
-    "dev": "node scripts/dev",
+    "start": "budo src/index.js:bundle.js --dir src --host localhost --port 3000 --no-debug --open",
+    "dev": "budo src/index.js:bundle.js --dir src --port 3000 --no-debug --live",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "budo": "^8.2.2"
+    "budo": "^8.3.0"
   },
   "dependencies": {
-    "raf-funcs": "^0.2.0",
-    "viewport-funcs": "^0.1.0"
+    "is-funcs": "^0.3.1",
+    "object-funcs": "^0.1.1",
+    "raf-funcs": "^0.3.0",
+    "viewport-funcs": "^0.2.1"
   }
 }

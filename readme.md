@@ -8,7 +8,13 @@
 npm i scroll-resize
 ```
 
+Package [on npm](https://www.npmjs.com/package/scroll-resize)
+
 ## API
+
+* [constructor](#constructorcb-opts)
+* [start](#startskip)
+* [stop](#stopskip)
 
 #### constructor(cb, [opts])
 
@@ -19,7 +25,7 @@ npm i scroll-resize
 | **opts.ignore** | optional ignore, accept `scroll` or `resize`, default to `undefined` |
 | **opts.silent** | if `true`, no `data` will be computed and sent to the callback, default to `false` |
 
-The callback receive an object with 6 properties
+The callback `cb` receive an object with 6 properties — can disabled with `opts.silent`
 
 | Argument | Action |
 | :------ | :------- |
