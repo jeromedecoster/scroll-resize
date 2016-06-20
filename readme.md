@@ -13,6 +13,7 @@ Package [on npm](https://www.npmjs.com/package/scroll-resize)
 ## API
 
 * [constructor](#constructorcb-opts)
+* [immediate](#immediate)
 * [start](#startskip)
 * [stop](#stopskip)
 
@@ -48,6 +49,12 @@ var sr = new SR(update)
 
 sr.start()
 ```
+
+#### immediate()
+
+Invoke the callbak function `cb` immediately, cancel the internal throttling if running
+
+Can be used even if the instance was not started yet or is already stopped
 
 #### start([skip])
 

@@ -46,6 +46,10 @@ ScrollResize.prototype.stop = function(skip) {
   this.throttled.immediate()
 }
 
+ScrollResize.prototype.immediate = function() {
+  this.throttled.immediate()
+}
+
 ScrollResize.prototype.call = function () {
   if (this.opts.silent === true) this.cb()
   else this.cb(rect())

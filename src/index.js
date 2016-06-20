@@ -1,7 +1,5 @@
 
 const ScrollResize = require('..')
-var s = new ScrollResize(function() {}, {delay:1, ignore:'ko'})
-s.start()
 
 const offset = document.querySelector('input[offset]')
 const silent = document.querySelector('input[silent]')
@@ -20,17 +18,13 @@ var a = []
 
 function button(evt) {
   var action = evt.target.getAttribute('action')
+  var skip = evt.target.hasAttribute('skip')
   var delay = +offset.value
   var ignore = getIgnore()
-  var pref = action.substr(0, 5)
-  var bool = action.substr(-4) == 'true'
-  // console.log('delay:', delay, 'ignore:', ignore, 'pref:', pref, 'bool:', bool)
+  // console.log('delay:', delay, 'ignore:', ignore, 'action:', action, 'skip:', skip)
 
-  if (pref == 'start') {
-    if (sr) {
-      sr.stop()
-      sr = null
-    }
+  if (action == 'start') {
+    if (sr && sr.started == true) return
 
     // uncomment to stress test
     // for (var i = 0; i <= 20000; i++) {
@@ -39,9 +33,16 @@ function button(evt) {
     // }
 
     sr = new ScrollResize(update, {delay:delay, ignore:ignore, silent:silent.checked})
-    sr.start(bool)
-  } else {
-    sr.stop(bool)
+    sr.start(skip)
+  } else if (action == 'stop') {
+    if (sr) sr.stop(skip)
+  } else if (action == 'immediate') {
+    if (sr) sr.immediate()
+  } else if (action == 'delete') {
+    if (sr) {
+      sr.stop()
+      sr = null
+    }
   }
 }
 
