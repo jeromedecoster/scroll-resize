@@ -1,6 +1,6 @@
 {
   "name": "scroll-resize",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Throttled window scroll and resize events",
   "repository": "jeromedecoster/scroll-resize",
   "main": "index.js",
@@ -28,9 +28,9 @@
     "budo": "^8.3.0"
   },
   "dependencies": {
-    "is-funcs": "^0.3.2",
-    "object-funcs": "^0.1.1",
-    "raf-funcs": "^0.3.0",
-    "viewport-funcs": "^0.2.1"
+    "object-funcs": "^0.2.0",
+    "raf-funcs": "^0.4.0",
+    "set-funcs": "^0.1.0",
+    "viewport-funcs": "^0.3.0"
   }
 }

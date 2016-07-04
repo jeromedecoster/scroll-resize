@@ -1,4 +1,3 @@
-
 const ScrollResize = require('..')
 
 const offset = document.querySelector('input[offset]')
